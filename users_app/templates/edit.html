@@ -5,35 +5,37 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <title>Add New User</title>
+        <title>Edit User</title>
     </head>
     <body>
         <div>
-            <H1>ADD NEW USER</H1>
+            <H1>Edit {{user.first_name}}</H1>
         </div>
 
       <div class="form-group"></div>
-        <form action="/user/new/add" method="POST">
+        <form action="/user/new/edit" method="POST">
             <div>
+    
                 <label for="first_name">
                     First name: 
                 </label>
-                <input class="form-control" type="text" name="first_name" />
+                <input class="form-control" type="text" name="first_name" value="{{user.first_name}}" />
             </div>
             <div>
                 <label for="last_name">
                     Last name: 
                 </label>
-                <input class="form-control" type="text"  name="last_name" />
+                <input class="form-control" type="text"  name="last_name" value="{{user.last_name}}"/>
             </div>
             <div>
                 <label for="email">
                     Email: 
                 </label>
-                <input class="form-control" type="email"  name="email" />
+                <input class="form-control" type="email"  name="email" value="{{user.last_name}}" />
             </div>
-       
-            <input type="submit" value="Add User">
+         
+            <input type="submit" value="Edit User">
+            <a class="btn btn-dark" href="/user/Show" role="button">Show User</a>
         </form>
 
     </body>
