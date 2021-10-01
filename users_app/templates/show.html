@@ -4,18 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>User</title>
 </head>
 <body>
+    <div class="container" style="width: 1000px;justify-content: center;">
     {% for user in user%}
-    <h2>User {{user.first_name}}</h2>
+    <h2>User: {{user.first_name}}</h2>
     <p>Full Name: {{user.first_name}} {{user.last_name}}</p>
     <p>Email: {{user.email}}</p>
 
     <p>Created ON: {{user.created_at}}</p>
     <p>Last Updated: {{user.updated_at}}</p>
-    {%endfor%}
+    
 
-    <a class="btn btn-dark" href="/user" role="button">Go Back</a>
+    <a class="btn btn-dark" style="height: 40px;" href="/user" role="button">Home</a>
+    <a class="btn btn-dark" style="height: 40px;background-color: blue;" href="/user/edit/{{user.id}}" role="button">Edit</a>
+    <a class="btn btn-dark" style="height: 40px;background-color: tomato;" href="/user/delete/{{user.id}}" role="button">Delete</a>
+    {%endfor%}
+    </div>
 </body>
 </html>

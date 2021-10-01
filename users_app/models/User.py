@@ -38,18 +38,18 @@ class User:
         return result
     
     @classmethod
-    def update (cls, newUser):
-        query = "UPDATE users SET first_name=%(first_name)s,last_name=%(last_name)s,email=%(email)s,created_at=now(),updated_at=now());"
+    def update (cls,newUser):
+        query = "UPDATE users SET first_name=%(first_name)s,last_name=%(last_name)s,email=%(email)s,updated_at=now() WHERE id=%(id)s;"
         data = {
+            "id":newUser.id,
             "first_name" : newUser.first_name,
             "last_name" : newUser.last_name,
             "email": newUser.email,
-            "created_at":newUser.created_at,
-            "updated_at": newUser.updated_at
+  
+            "updated_at": newUser.updated_at,
+    
                 }
-        print(1)
-        result = connectToMySQL( "users" ).query_db( query, data )
-        print(2)
+        result = connectToMySQL( 'users' ).query_db( query, data )
         return result 
     
     @classmethod

@@ -37,9 +37,9 @@ def edit(id):
     data ={ 
         "id":int(id)
     }
-    newUser=User(data)
-    result=User.get_one(newUser)
-    return render_template("edit.html")
+   
+    
+    return render_template("edit.html", user=User.get_one_user(data))
 
 @app.route('/user/show/<id>',methods=['GET'])
 def show(id):
@@ -52,17 +52,19 @@ def show(id):
     return render_template("show.html",user=User.get_one_user(data))
 
 
-@app.route('/user/update',methods=['POST'])
-def update():
-    id=['id']
+@app.route('/user/update/<id>',methods=['POST'])
+def update(id):
+
     first_name =request.form['first_name']
     last_name = request.form['last_name']
     email= request.form['email']
     created_at=['created_at']
     updated_at=['updated_at']
-    newUser = User( id,first_name,last_name,email,created_at,updated_at)
-    result = User.update(newUser)
-    return result,redirect('/user')
+    newUser = User(id,first_name, last_name, email, created_at, updated_at)
+   
+    result=User.update(newUser)
+    print( result )
+    return redirect('/user')
 
 @app.route('/user/delete/<id>')
 def delete(id):

@@ -6,16 +6,21 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <title>Edit User</title>
+        
     </head>
     <body>
-        <div>
+        <div class="container" style="width: 1000px;">
+        <div style="display: flex; justify-content: space-evenly;">
+            {% for user in user%}
             <H1>Edit {{user.first_name}}</H1>
+            <a class="btn btn-dark" href="/user" role="button" style="height: 40px;">HOME</a>
         </div>
 
-      <div class="form-group"></div>
-        <form action="/user/new/edit" method="POST">
+      
+        <div class="form-group"></div>
+        <form action="/user/update/{{user.id}}" method="POST">
             <div>
-    
+               
                 <label for="first_name">
                     First name: 
                 </label>
@@ -31,12 +36,15 @@
                 <label for="email">
                     Email: 
                 </label>
-                <input class="form-control" type="email"  name="email" value="{{user.last_name}}" />
+                <input class="form-control" type="email"  name="email" value="{{user.email}}" />
             </div>
          
-            <input type="submit" value="Edit User">
-            <a class="btn btn-dark" href="/user/Show" role="button">Show User</a>
+            <input class="btn btn-dark" style="background-color: blue;color: white;" type="submit" value="Update">
+            <a class="btn btn-dark" href="/user/show/{{user.id}}" role="button">Show User</a>
+            
         </form>
-
+        {%endfor%}
+    </div>
     </body>
 </html>
+
